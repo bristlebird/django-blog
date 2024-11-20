@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
 # DEBUG = os.environ.get("DEVELOPMENT")
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-bristlebird-djangoblog-n4kmut46erv.ws.codeinstitute-ide.net', '.herokuapp.com',]
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_summernote',
     'blog',
+    'about',
 ]
 
 MIDDLEWARE = [
