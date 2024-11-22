@@ -31,21 +31,25 @@ def post_detail(request, slug):
     comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
+        print("Received a POST request")
+        # instantiate CommentForm class using form data sent in post request & assign to variable
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
+            # return comment object without saving to database so we can add post & author fields before saving
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.post = post
+            # save to database with author & post fields
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
     )
 
-
+    # clear comment form so another comment can be submitted
     comment_form = CommentForm()
 
-
+    print("hello")
     return render(
         request,
         "blog/post_detail.html",
