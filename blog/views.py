@@ -54,7 +54,6 @@ def post_detail(request, slug):
     comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
-        print("Received a POST request")
         # instantiate CommentForm class using form data sent in post
         # request & assign to variable
         comment_form = CommentForm(data=request.POST)
@@ -74,7 +73,6 @@ def post_detail(request, slug):
     # clear comment form so another comment can be submitted
     comment_form = CommentForm()
 
-    print("hello")
     return render(
         request,
         "blog/post_detail.html",
